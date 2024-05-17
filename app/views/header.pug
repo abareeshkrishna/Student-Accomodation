@@ -54,13 +54,13 @@ html
       }
   body
     #mySidenav.sidenav
-      a(href='/home', class=(currentPage === '/home' ? 'active' : 'default')) Home
+      a(href='/agency_homepage', class=(currentPage === 'about' ? 'active' : 'default')) Home
       //- a(href='#', class=(currentPage === 'services' ? 'active' : '')) Services
-      a(href='/applied_properties', class=(currentPage === '/applied_properties' ? 'active' : '')) Applied 
-      a(href='/logout', class=(currentPage === '/logout' ? 'active' : '')) Logout
+      a(href='/rental-property', class=(currentPage === 'clients' ? 'active' : '')) Rental Property
+      //- a(href='#', class=(currentPage === 'contact' ? 'active' : '')) Contact
     #main
       .navbar
-        span(style='font-size:30px;cursor:pointer', onclick='toggleNav()') &#9776;
+        span(style='font-size:30px;cursor:pointer', onclick='toggleNav()') &#9776; HOME
         img.logo(src="indeed-logo.png", alt="")
         //- ul.nav-links
         //-   li.nav-link Sign in

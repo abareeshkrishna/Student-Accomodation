@@ -1,0 +1,48 @@
+doctype html
+html(lang="en")
+  head
+    meta(charset="UTF-8")
+    meta(name="viewport", content="width=device-width, initial-scale=1.0")
+    title Job Search
+    link(rel="stylesheet", href="styles.css") 
+  body
+    include index
+    header
+      .hero-section
+        h1 FIND YOUR PROPERTY!!!.
+        form#search-form(onsubmit="return false;")
+          input(type="text", id="property-title", placeholder="Property title")
+          input(type="text", id="location", placeholder="Location")
+          button(type="button", onclick="searchproperties()") Find Properties
+    main
+      section.search-results
+        ul.property-listings
+          each property in properties
+            li.property-listing(onclick=`openpropertyDetails('${property.property_id}')`)
+              h3.property-title= property.title
+              p.property-agency= property.agency
+              p.property-location= property.location
+              p.property-description= property.description
+
+    script.
+      function searchproperties() {
+        var title = document.getElementById('property-title').value.toLowerCase();
+        var location = document.getElementById('location').value.toLowerCase();
+        
+        var propertyListings = document.querySelectorAll('.property-listing');
+        
+        propertyListings.forEach(propertyListing => {
+          var propertyTitle = propertyListing.querySelector('.property-title').innerText.toLowerCase();
+          var propertyLocation = propertyListing.querySelector('.property-location').innerText.toLowerCase();
+          
+          if (propertyTitle.includes(title) && propertyLocation.includes(location)) {
+            propertyListing.style.display = '';
+          } else {
+            propertyListing.style.display = 'none';
+          }
+        });
+      }
+
+      function openpropertyDetails(propertyId) {
+        window.location.href = `/view-property/${propertyId}`;
+      }

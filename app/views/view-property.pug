@@ -1,0 +1,90 @@
+doctype html
+include index
+html(lang="en")
+  head
+    meta(charset="UTF-8")
+    meta(name="viewport", content="width=device-width, initial-scale=1.0")
+    title Property Details
+    style.
+      body {
+        font-family: Arial, sans-serif;
+        margin: 0;
+        padding: 0;
+      }
+
+      header {
+        background-color: #4CAF50;
+        color: white;
+        text-align: center;
+        padding: 20px 0;
+      }
+
+      h1 {
+        margin: 0;
+      }
+
+      main {
+        padding: 20px;
+      }
+
+      .property-details table {
+        width: 100%;
+        border-collapse: collapse;
+      }
+
+      .property-details th,
+      .property-details td {
+        padding: 8px;
+        text-align: left;
+        border-bottom: 1px solid #ddd;
+      }
+
+      .property-details th {
+        background-color: #f2f2f2;
+      }
+
+      .apply-button {
+        margin-top: 20px;
+        text-align: center;
+      }
+
+      .apply-button a {
+        background-color: #4CAF50;
+        color: white;
+        padding: 10px 20px;
+        border: none;
+        border-radius: 5px;
+        cursor: pointer;
+        font-size: 16px;
+        text-decoration: none;
+      }
+
+  body
+    header
+      h1 Property Details
+    main
+      .property-details
+        table
+          tr
+            th#property-id-label Name
+            td#property-id-value #{property.property_id}
+          tr
+            th Title
+            td #{property.title}
+          tr
+            th Description
+            td #{property.description}
+          tr
+            th Agency ID
+            td #{property.agency_id}
+          tr
+            th Location
+            td #{property.location}
+          tr
+            th Rent
+            td #{property.rent}
+          tr
+            th Posted Date
+            td #{property.posted_date}
+      .apply-button
+        a(href=`/apply_property/${property.property_id}`) Apply
